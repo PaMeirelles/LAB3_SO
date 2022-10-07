@@ -1,6 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "interpretador.h"
 
 int main(void) {
-  printf("Hello World\n");
-  return 0;
+  s_processo * processo = malloc(sizeof(s_processo));
+
+  processo->nome = "teste";
+  processo->prio = 3;
+  processo->inicio = 15;
+  processo->duracao = 20;
+
+  printa_processo(processo);
 }
