@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "escalonador.h"
+#include "interpretador.h"
 
 int main(void) {
   char * linha1 = "exec p1, prioridade=3, inicio_tempo_execucao=10, tempo_total_execucao=8";
