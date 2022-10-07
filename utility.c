@@ -26,7 +26,6 @@ s_processo * carrega_processo(char * linha){
   for(int j=0; j < i; j++){
     processo->nome[j] = *(indices[0] + 5 + j);
   }
-  
   i = indices[2] - indices[1] - 13;
   for(int j=0; j < i; j++){
     buffer[j] = *(indices[1] + 13 + j);
