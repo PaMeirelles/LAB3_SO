@@ -87,3 +87,17 @@ int remove_from_prio(char * nome, s_no_prio * head){
   }while(head != first);
   return 1;
 }
+int remove_processo(char * nome, unsigned short prio, s_no_prio * head){
+      printf("%d\n", head->prio);
+
+  while(head){
+    /*
+    if(head->prio == prio){
+      remove_from_prio(nome, head);
+      return 0;
+    }
+    */
+    head = head->next;
+  }
+  return 1;
+}

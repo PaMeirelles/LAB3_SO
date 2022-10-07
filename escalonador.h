@@ -19,3 +19,4 @@ void add_to_prio(s_no_processo * processo, s_no_prio * prio);
 void add_prio_level(s_no_prio * head, s_no_prio * prio_level);
 int add_process(s_no_processo * no, s_no_prio * head);
 int remove_from_prio(char * nome, s_no_prio * head);
+int remove_processo(char * nome, unsigned short prio, s_no_prio * head);
