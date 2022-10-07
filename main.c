@@ -15,29 +15,23 @@ int main(void) {
   s_processo * processo4 = carrega_processo(linha4);
   s_processo * processo5 = carrega_processo(linha5);
 
-  s_no_prio * pr3 = create_no_prio(3);
-  s_no_prio * pr1 = create_no_prio(1);
-  s_no_prio * pr2 = create_no_prio(2);
+  s_no_prio * base = init_prios(7);
 
-  add_prio_level(pr1, pr2);
-  add_prio_level(pr1, pr3);
-
-  
   s_no_processo * p1 = create_no_processo(processo1);
   s_no_processo * p2 = create_no_processo(processo2);
   s_no_processo * p3 = create_no_processo(processo3);
   s_no_processo * p4 = create_no_processo(processo4);
   s_no_processo * p5 = create_no_processo(processo5);
 
-  add_process(p1, pr1);
-  add_process(p2, pr1);
-  add_process(p3, pr1);
-  add_process(p4, pr1);
-  add_process(p5, pr1);
+  add_process(p1, base);
+  add_process(p2, base);
+  add_process(p3, base);
+  add_process(p4, base);
+  add_process(p5, base);
 
   
-  printa_tudo(pr1);
+  printa_tudo(base);
 
-  remove_processo("p1", 3, pr1);
-  printa_tudo(pr1);
+  remove_processo("p1", 3, base);
+  printa_tudo(base);
 }

@@ -163,3 +163,16 @@ int remove_processo(char * nome, unsigned short prio, s_no_prio * head){
   }
   return 1;
 }
+
+s_no_prio * init_prios(unsigned short n){
+  if(n < 1){
+    return NULL;
+  }
+  s_no_prio * ancora = create_no_prio(0);
+  s_no_prio * temp;
+  for(int i=1; i < n; i++){
+    temp = create_no_prio(i);
+    add_prio_level(ancora, temp);
+  }
+  return ancora;
+}
