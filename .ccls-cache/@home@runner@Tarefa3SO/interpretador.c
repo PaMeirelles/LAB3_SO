@@ -13,7 +13,7 @@ s_processo * carrega_processo(char * linha){
   indices[1] = strstr(linha,  ", prioridade=");
   indices[2] = strstr(linha,  ", inicio_tempo_execucao=");
   indices[3] = strstr(linha,  ", tempo_total_execucao=");
-  printf("%p %p %p %p\n", indices[0], indices[1], indices[2], indices[3]);
+  // printf("%p %p %p %p\n", indices[0], indices[1], indices[2], indices[3]);
   
   for(int j=0; j < 4; j++){
     if(!indices[j]){
@@ -55,6 +55,6 @@ s_processo * carrega_processo(char * linha){
 }
 
 void printa_processo(s_processo * processo){
-  printf("Nome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\n",
+  printf("\nNome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\n",
   processo->nome, processo->prio, processo->inicio, processo->duracao);
 }
