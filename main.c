@@ -37,5 +37,8 @@ int main(void) {
 
   
   printa_tudo(pr1);
-  
+
+  remove_from_prio("p3", pr1);
+
+  printa_tudo(pr1);
 }

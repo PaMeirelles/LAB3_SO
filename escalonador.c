@@ -1,6 +1,7 @@
 #include "escalonador.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 void printa_prio(s_no_prio * head){
   s_no_processo * p = head->no;
@@ -17,6 +18,7 @@ void printa_tudo(s_no_prio * head){
     printa_prio(head);
     head = head->next;
     }
+  printf("---------------\n");
 }
 s_no_processo * create_no_processo(s_processo * p){
   s_no_processo * no = malloc(sizeof(s_no_processo));
@@ -63,4 +65,25 @@ int add_process(s_no_processo * no, s_no_prio * head){
   }
   printf("Nivel de prioridade(%d) não encontrado\n", no->processo->prio);
   return -1;
+}
+
+int remove_from_prio(char * nome, s_no_prio * head){
+  s_no_processo * first = head->no;
+  s_no_processo * p = head->no;
+  s_no_processo * temp;
+  do{
+    if(strcmp(nome, p->next->processo->nome) == 0){
+      if(p->next == first){
+        head->no = p;
+      }
+      temp = p->next->next;
+      free(p->next);
+      p->next = temp;
+      return 0;
+    }
+    else{
+      p = p->next;
+    }
+  }while(head != first);
+  return 1;
 }
