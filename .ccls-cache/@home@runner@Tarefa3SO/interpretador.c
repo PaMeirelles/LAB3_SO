@@ -13,7 +13,7 @@ s_processo * carrega_processo(char * linha){
   indices[1] = strstr(linha,  ", prioridade=");
   indices[2] = strstr(linha,  ", inicio_tempo_execucao=");
   indices[3] = strstr(linha,  ", tempo_total_execucao=");
-  // printf("%p %p %p %p\n", indices[0], indices[1], indices[2], indices[3]);
+  //printf("%c %c %c %c\n", *indices[0], *indices[1], *indices[2], *indices[3]);
   
   for(int j=0; j < 4; j++){
     if(!indices[j]){
@@ -30,15 +30,17 @@ s_processo * carrega_processo(char * linha){
   
   i = indices[2] - indices[1] - 13;
   for(int j=0; j < i; j++){
-    buffer[j] = *(indices[i] + 13 + j);
+    buffer[j] = *(indices[2] + 13 + j);
   }
   processo->prio = atoi(buffer);
   
   i = indices[3] - indices[2] - 24;
   for(int j=0; j < i; j++){
-    buffer[j] = *(indices[i] + 24 + j);
+    buffer[j] = *(indices[2] + 24 + j);
+    printf("%c", buffer[j]);
   }
   buffer[i] = '\0';
+  printf("\n%s\n\n", buffer);
   processo->inicio = atoi(buffer);
   
   char * p = indices[3]+23;

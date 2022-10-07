@@ -52,3 +52,15 @@ void add_prio_level(s_no_prio * head, s_no_prio * prio_level){
   }
   head->next = prio_level;
 }
+
+int add_process(s_no_processo * no, s_no_prio * head){
+  while(head){
+    if(no->processo->prio == head->prio){
+      add_to_prio(no, head);
+      return 0;
+    }
+    head = head->next;
+  }
+  printf("Nivel de prioridade(%d) não encontrado\n", no->processo->prio);
+  return -1;
+}
