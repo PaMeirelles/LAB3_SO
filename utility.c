@@ -177,3 +177,12 @@ s_no_prio * init_prios(unsigned short n){
   }
   return ancora;
 }
+
+unsigned short * init_states(int size){
+  unsigned short * states = malloc(sizeof(unsigned short) * size);
+
+  for(int i=0; i < size; i++){
+    states[i] = 0;
+  }
+  return states;
+}
