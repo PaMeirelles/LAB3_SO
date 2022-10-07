@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-s_processo * carrega_processo(char * linha){
+s_processo * carrega_processo(char * linha, unsigned short * num_processos){
   char * indices[4];
   char buffer[100];
   int i;
   s_processo * processo = malloc(sizeof(s_processo));
+  *num_processos += 1;
+  processo->id = *num_processos;
   
   indices[0] = strstr(linha, "exec ");
   indices[1] = strstr(linha,  ", prioridade=");
@@ -55,7 +57,7 @@ s_processo * carrega_processo(char * linha){
 }
 
 void printa_processo(s_processo * processo){
-  printf("\nNome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\n",
+  printf("\nId:%d\nNome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\n", processo->id,
   processo->nome, processo->prio, processo->inicio, processo->duracao);
 }
 

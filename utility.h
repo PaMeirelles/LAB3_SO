@@ -1,5 +1,6 @@
 struct processo{
   char * nome;
+  unsigned short id;
   unsigned short prio;
   unsigned int inicio;
   unsigned int duracao;
@@ -26,5 +27,5 @@ int add_process(s_no_processo * no, s_no_prio * head);
 int remove_from_prio(char * nome, s_no_prio * head);
 int remove_processo(char * nome, unsigned short prio, s_no_prio * head);
 void printa_processo(s_processo * processo);
-s_processo * carrega_processo(char * linha);
+s_processo * carrega_processo(char * linha, unsigned short * num_processos);
 s_no_prio * init_prios(unsigned short n);

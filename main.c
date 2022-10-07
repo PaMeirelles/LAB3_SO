@@ -4,7 +4,8 @@
 #include "interpretador.h"
 
 int main(void) {
-  s_processo ** processos = le_entrada();
+  unsigned short n_processos = 0;
+  s_processo ** processos = le_entrada(&n_processos);
 
   s_no_prio * base = init_prios(7);
 

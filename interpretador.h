@@ -1,1 +1,1 @@
-s_processo ** le_entrada(void);
+s_processo ** le_entrada(unsigned short * n);

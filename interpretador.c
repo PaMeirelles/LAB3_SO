@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "utility.h"
 
-s_processo ** le_entrada(void){  
+s_processo ** le_entrada(unsigned short * n){  
     s_processo ** processos = malloc(8 * BUFFER_SIZE);
     FILE * fp;
     char * line = NULL;
@@ -14,7 +14,7 @@ s_processo ** le_entrada(void){
     fp = fopen("entrada.txt", "r");
 
     while ((read = getline(&line, &len, fp)) != -1) {
-        processos[counter] = carrega_processo(line);
+        processos[counter] = carrega_processo(line, n);
       counter++;
     }
 
