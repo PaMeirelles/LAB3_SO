@@ -3,6 +3,8 @@
 #include "utility.h"
 #include "interpretador.h"
 #include "escalonador.h"
+
+
 int main(void) {
   unsigned short n_processos = 0;
   s_processo ** processos = le_entrada(&n_processos);
@@ -21,3 +23,5 @@ int main(void) {
     sleep(1);
   }
     }
+
+}

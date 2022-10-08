@@ -3,6 +3,8 @@
 #include "utility.h"
 #include "interpretador.h"
 #include "escalonador.h"
+
+
 int main(void) {
   unsigned short n_processos = 0;
   s_processo ** processos = le_entrada(&n_processos);
@@ -11,9 +13,6 @@ int main(void) {
   gettimeofday(&inicio, NULL);
   gettimeofday(&ultimo_inc, NULL);
   gettimeofday(&ultima_mod, NULL);
-
-  ultima_mod.tv_sec -= 3;
-  ultimo_inc.tv_sec -= 3;
 
   s_no_prio * base = init_prios(7);
   while(1){
@@ -24,3 +23,5 @@ int main(void) {
     sleep(1);
   }
     }
+
+}
