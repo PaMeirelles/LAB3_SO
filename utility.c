@@ -143,8 +143,11 @@ int remove_from_prio(char * nome, s_no_prio * head){
   }
   do{
     if(strcmp(nome, p->next->processo->nome) == 0){
-      if(p->next == first){
-        head->no = p;
+      if(p->next == p){
+        head->no = NULL;
+      }
+      else{
+        head->no = head->no->next;
       }
       temp = p->next->next;
       free(p->next);

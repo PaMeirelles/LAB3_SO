@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void escalona(struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_prio * base, s_no_processo ** running){
+void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_prio * base, s_no_processo ** running){
   s_no_prio * p = base;
   struct timeval agora;
   int over = 0;
@@ -13,6 +13,7 @@ void escalona(struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_pri
   if((agora.tv_sec - ultimo_inc->tv_sec) < 1){
     return;
   }
+  printf("Tempo: %ds\n", agora.tv_sec - inicio->tv_sec);
 
   gettimeofday(ultimo_inc, NULL);
   if(*running != NULL){
@@ -22,6 +23,7 @@ void escalona(struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_pri
   if((*running) != NULL &&   (*running)->processo->decorrido >=   (*running)->processo->duracao){
     remove_processo((*running)->processo->nome, (*running)->processo->prio, base);
     over = 1;
+    *running = NULL;
     }
 
   while(1){
@@ -37,12 +39,16 @@ void escalona(struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_pri
     }
   }
 
+
     if((*running) != NULL && (agora.tv_sec - ultima_mod->tv_sec) % 3 != 0 && (*running)->processo->prio == p->no->next->processo->prio){
     return;
   }
+
+
   if(!over && (*running) == p->no->next && (*running) != NULL){
     return;
     }
+
 
   if((*running) != NULL){
     printf("Interrompe %s\n", (*running)->processo->nome);
@@ -51,6 +57,7 @@ void escalona(struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_pri
         p->no = p->no->next;
     }
   }
+
 
   if(p->no->processo->state == 1){
     printf("Inicia processo %s\n", p->no->processo->nome);

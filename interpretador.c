@@ -33,7 +33,7 @@ void interpreta(struct timeval inicio, s_processo ** processos, s_no_prio * base
   gettimeofday(&agora, NULL);
   while(*p != NULL){
     if((*p)->state == 0 && ((agora.tv_sec - inicio.tv_sec) >= (*p)->inicio)){
-      printf("Manda o processo %d!\n", (*p)->id);
+      //printf("Manda o processo %d!\n", (*p)->id);
       s_no_processo * np = create_no_processo(*p);
       add_process(np, base);
      (*p)->state = 1;
