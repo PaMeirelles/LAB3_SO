@@ -8,6 +8,7 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
   s_no_prio * p = base;
   struct timeval agora;
   int over = 0;
+  int pid;
   gettimeofday(&agora, NULL);
   
   if((agora.tv_sec - ultimo_inc->tv_sec) < 1){
@@ -58,9 +59,12 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
     }
   }
 
-
   if(p->no->processo->state == 1){
     printf("Inicia processo %s\n", p->no->processo->nome);
+    if(pid=fork() == 0){
+      p->no->processo->id = getpid();
+      execve(p->no->processo->nome, NULL, NULL);
+    }
   }
   else if(p->no->processo->state == 3){
     printf("Retoma processo %s\n", p->no->processo->nome);
