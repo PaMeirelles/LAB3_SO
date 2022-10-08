@@ -15,7 +15,10 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
   if((agora.tv_sec - ultimo_inc->tv_sec) < 1){
     return;
   }
-  printf("Tempo: %ds\n", agora.tv_sec - inicio->tv_sec);
+  if(*running != NULL){
+    
+  printf("Tempo: %d Rodando: %s\n", agora.tv_sec - inicio->tv_sec, (*running)->processo->nome);
+  }
 
   gettimeofday(ultimo_inc, NULL);
   if(*running != NULL){
@@ -53,9 +56,8 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
 
 
   if((*running) != NULL){
-    printf("%d\n", (*running)->processo->id);
     kill((*running)->processo->id, SIGSTOP);
-    printf("Interrompe %s\n", (*running)->processo->nome);
+    //printf("Interrompe %s\n", (*running)->processo->nome);
    (*running)->processo->state = 3;
     if((*running) == p->no){
         p->no = p->no->next;
@@ -63,16 +65,16 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
   }
 
   if(p->no->processo->state == 1){
-    printf("Inicia processo %s\n", p->no->processo->nome);
+    //printf("Inicia processo %s\n", p->no->processo->nome);
     acha_processo(p->no->processo->nome, p->no->processo->prio, base)->processo->id = getpid();
-      printa_processo(acha_processo(p->no->processo->nome, p->no->processo->prio, base)->processo);
+
     if(fork() != 0){
       execve(p->no->processo->nome, NULL, NULL);
     }
   }
   else if(p->no->processo->state == 3){
     kill(p->no->processo->id, SIGCONT);
-    printf("Retoma processo %s\n", p->no->processo->nome);
+    //printf("Retoma processo %s\n", p->no->processo->nome);
   }
   else{
     printf("Deu merda %d\n", p->no->processo->state);
