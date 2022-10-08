@@ -2,8 +2,10 @@ struct processo{
   char * nome;
   unsigned short id;
   unsigned short prio;
+
   unsigned int inicio;
   unsigned int duracao;
+  unsigned int decorrido;
 } typedef s_processo;
 
 struct no_processo{

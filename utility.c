@@ -10,6 +10,7 @@ s_processo * carrega_processo(char * linha, unsigned short * num_processos){
   s_processo * processo = malloc(sizeof(s_processo));
   *num_processos += 1;
   processo->id = *num_processos;
+  processo->decorrido = 0;
   
   indices[0] = strstr(linha, "exec ");
   indices[1] = strstr(linha,  ", prioridade=");
@@ -57,8 +58,8 @@ s_processo * carrega_processo(char * linha, unsigned short * num_processos){
 }
 
 void printa_processo(s_processo * processo){
-  printf("\nId:%d\nNome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\n", processo->id,
-  processo->nome, processo->prio, processo->inicio, processo->duracao);
+  printf("\nId:%d\nNome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\nDecorrido:%d\n", processo->id,
+  processo->nome, processo->prio, processo->inicio, processo->duracao, processo->decorrido);
 }
 
 void printa_prio(s_no_prio * head){
