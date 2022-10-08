@@ -4,7 +4,6 @@
 #include "interpretador.h"
 #include "escalonador.h"
 
-
 int main(void) {
   unsigned short n_processos = 0;
   s_processo ** processos = le_entrada(&n_processos);
@@ -18,4 +17,6 @@ int main(void) {
     interpreta(inicio, processos, base);
     escalona(&inicio, &ultima_mod, &ultimo_inc, base, &running);
   }
-}
+  }
+
+

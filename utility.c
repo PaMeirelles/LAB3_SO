@@ -9,7 +9,7 @@ s_processo * carrega_processo(char * linha, unsigned short * num_processos){
   int i;
   s_processo * processo = malloc(sizeof(s_processo));
   *num_processos += 1;
-  processo->id = *num_processos;
+  processo->id = -1;
   processo->state = 0;
   processo->decorrido = 0;
   
@@ -160,6 +160,27 @@ int remove_from_prio(char * nome, s_no_prio * head){
   }while(head != first);
   return 1;
 }
+
+s_no_processo * acha_processo(char * nome, unsigned short prio, s_no_prio * head){
+
+  s_no_prio * p = head;
+  while(p){
+
+    if(p->prio == prio){
+      s_no_processo * first = p->no;
+      do{
+        if(p->no->processo->nome == nome){
+          return p->no;
+        }
+        p->no = p->no->next;
+      }while(p->no != first);
+      return NULL;
+    }  
+        p = p->next;
+
+    }
+    return NULL;
+  }
 
 int remove_processo(char * nome, unsigned short prio, s_no_prio * head){
   while(head){

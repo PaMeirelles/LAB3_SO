@@ -3,12 +3,13 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <signal.h>
 
 void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_prio * base, s_no_processo ** running){
   s_no_prio * p = base;
   struct timeval agora;
   int over = 0;
-  int pid;
   gettimeofday(&agora, NULL);
   
   if((agora.tv_sec - ultimo_inc->tv_sec) < 1){
@@ -52,6 +53,8 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
 
 
   if((*running) != NULL){
+    printf("%d\n", (*running)->processo->id);
+    kill((*running)->processo->id, SIGSTOP);
     printf("Interrompe %s\n", (*running)->processo->nome);
    (*running)->processo->state = 3;
     if((*running) == p->no){
@@ -61,12 +64,14 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
 
   if(p->no->processo->state == 1){
     printf("Inicia processo %s\n", p->no->processo->nome);
-    if(pid=fork() == 0){
-      p->no->processo->id = getpid();
+    acha_processo(p->no->processo->nome, p->no->processo->prio, base)->processo->id = getpid();
+      printa_processo(acha_processo(p->no->processo->nome, p->no->processo->prio, base)->processo);
+    if(fork() != 0){
       execve(p->no->processo->nome, NULL, NULL);
     }
   }
   else if(p->no->processo->state == 3){
+    kill(p->no->processo->id, SIGCONT);
     printf("Retoma processo %s\n", p->no->processo->nome);
   }
   else{
