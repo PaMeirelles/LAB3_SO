@@ -10,6 +10,7 @@ s_processo * carrega_processo(char * linha, unsigned short * num_processos){
   s_processo * processo = malloc(sizeof(s_processo));
   *num_processos += 1;
   processo->id = *num_processos;
+  processo->state = 0;
   processo->decorrido = 0;
   
   indices[0] = strstr(linha, "exec ");
@@ -179,13 +180,4 @@ s_no_prio * init_prios(unsigned short n){
     add_prio_level(ancora, temp);
   }
   return ancora;
-}
-
-unsigned short * init_states(int size){
-  unsigned short * states = malloc(sizeof(unsigned short) * size);
-
-  for(int i=0; i < size; i++){
-    states[i] = 0;
-  }
-  return states;
 }

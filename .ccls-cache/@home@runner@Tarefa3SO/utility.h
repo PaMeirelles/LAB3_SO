@@ -1,11 +1,11 @@
 struct processo{
   char * nome;
-  unsigned short id;
+  int id;
   unsigned short prio;
-
   unsigned int inicio;
   unsigned int duracao;
   unsigned int decorrido;
+  int state;
 } typedef s_processo;
 
 struct no_processo{
@@ -31,4 +31,3 @@ int remove_processo(char * nome, unsigned short prio, s_no_prio * head);
 void printa_processo(s_processo * processo);
 s_processo * carrega_processo(char * linha, unsigned short * num_processos);
 s_no_prio * init_prios(unsigned short n);
-unsigned short * init_states(int size);

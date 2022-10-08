@@ -22,21 +22,23 @@ s_processo ** le_entrada(unsigned short * n){
     fclose(fp);
     if (line)
         free(line);
+    processos[counter] = NULL;
     return processos;
 }
 
-void interpreta(struct timeval inicio, s_processo ** processos, unsigned short * states, int size, s_no_prio * base){
+void interpreta(struct timeval inicio, s_processo ** processos, s_no_prio * base){
+  //printa_processo((*(processos+1)));
+  s_processo ** p = processos;
   struct timeval agora;
   gettimeofday(&agora, NULL);
-  printf("Tempo: %ds\n", (agora.tv_sec - inicio.tv_sec));
-  for(int i=0; i < size; i++){
-    if(states[i] == 0 && ((agora.tv_sec - inicio.tv_sec) >= processos[i]->inicio)){
-      printf("Manda o processo %d!\n", processos[i]->id);
-      s_no_processo * np = create_no_processo(processos[i]);
+  while(*p != NULL){
+    if((*p)->state == 0 && ((agora.tv_sec - inicio.tv_sec) >= (*p)->inicio)){
+      printf("Manda o processo %d!\n", (*p)->id);
+      s_no_processo * np = create_no_processo(*p);
       add_process(np, base);
-      states[i] = 1;
-    }
+     (*p)->state = 1;
+      }
+      p++;
 
   }
-  
 }

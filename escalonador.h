@@ -1,0 +1,1 @@
+void escalona(struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_prio * base, s_no_processo ** running);

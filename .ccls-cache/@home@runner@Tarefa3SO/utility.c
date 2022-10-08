@@ -10,6 +10,7 @@ s_processo * carrega_processo(char * linha, unsigned short * num_processos){
   s_processo * processo = malloc(sizeof(s_processo));
   *num_processos += 1;
   processo->id = *num_processos;
+  processo->state = 0;
   processo->decorrido = 0;
   
   indices[0] = strstr(linha, "exec ");
@@ -120,8 +121,6 @@ void add_prio_level(s_no_prio * head, s_no_prio * prio_level){
 
 int add_process(s_no_processo * no, s_no_prio * head){
   while(head != NULL){
-    printf("%d\n", head->prio);
-
     if(no->processo->prio == head->prio){
       
       add_to_prio(no, head);
@@ -181,13 +180,4 @@ s_no_prio * init_prios(unsigned short n){
     add_prio_level(ancora, temp);
   }
   return ancora;
-}
-
-unsigned short * init_states(int size){
-  unsigned short * states = malloc(sizeof(unsigned short) * size);
-
-  for(int i=0; i < size; i++){
-    states[i] = 0;
-  }
-  return states;
 }
