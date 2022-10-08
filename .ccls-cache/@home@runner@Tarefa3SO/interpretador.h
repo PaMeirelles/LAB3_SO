@@ -1,8 +1,4 @@
-struct processo{
-  char * nome;
-  unsigned short prio;
-  unsigned int inicio;
-  unsigned int duracao;
-} typedef s_processo;
-void printa_processo(s_processo * processo);
-s_processo * carrega_processo(char * linha);
+#include <sys/time.h>
+
+s_processo ** le_entrada(unsigned short * n);
+void interpreta(struct timeval inicio, s_processo ** processos, unsigned short * states, int size);

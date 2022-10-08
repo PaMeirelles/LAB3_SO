@@ -1,62 +1,42 @@
-#include "interpretador.h"
-#include <string.h>
-#include <stdlib.h>
+#define BUFFER_SIZE 100
 #include <stdio.h>
+#include <stdlib.h>
+#include "utility.h"
 
-s_processo * carrega_processo(char * linha){
-  char * indices[4];
-  char buffer[100];
-  int i;
-  s_processo * processo = malloc(sizeof(s_processo));
-  
-  indices[0] = strstr(linha, "exec ");
-  indices[1] = strstr(linha,  ", prioridade=");
-  indices[2] = strstr(linha,  ", inicio_tempo_execucao=");
-  indices[3] = strstr(linha,  ", tempo_total_execucao=");
-  //printf("%c %c %c %c\n", *indices[0], *indices[1], *indices[2], *indices[3]);
-  
-  for(int j=0; j < 4; j++){
-    if(!indices[j]){
-      printf("Erro de sintaxe no argumento %d\n", j+1);
-      exit(-j);
+
+s_processo ** le_entrada(unsigned short * n){  
+    s_processo ** processos = malloc(8 * BUFFER_SIZE);
+    FILE * fp;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    int counter = 0;
+
+    fp = fopen("entrada.txt", "r");
+
+    while ((read = getline(&line, &len, fp)) != -1) {
+        processos[counter] = carrega_processo(line, n);
+      counter++;
     }
-  }
-  
-  i = indices[1] - indices[0] - 5;
-  processo->nome = malloc(i);
-  for(int j=0; j < i; j++){
-    processo->nome[j] = *(indices[0] + 5 + j);
-  }
-  
-  i = indices[2] - indices[1] - 13;
-  for(int j=0; j < i; j++){
-    buffer[j] = *(indices[2] + 13 + j);
-  }
-  processo->prio = atoi(buffer);
-  
-  i = indices[3] - indices[2] - 24;
-  for(int j=0; j < i; j++){
-    buffer[j] = *(indices[2] + 24 + j);
-    printf("%c", buffer[j]);
-  }
-  buffer[i] = '\0';
-  printf("\n%s\n\n", buffer);
-  processo->inicio = atoi(buffer);
-  
-  char * p = indices[3]+23;
-  int counter = 0;
-  while(*p){
-    buffer[counter] = *p;
-    counter++;
-    p++;
-  }
-  buffer[counter] = '\0';
-  processo->duracao = atoi(buffer);
-  
-  return processo;
+
+    fclose(fp);
+    if (line)
+        free(line);
+    return processos;
 }
 
-void printa_processo(s_processo * processo){
-  printf("\nNome: %s\nPrioridade:%d\nInicio:%d\nDuracao:%d\n",
-  processo->nome, processo->prio, processo->inicio, processo->duracao);
+void interpreta(struct timeval inicio, s_processo ** processos, unsigned short * states, int size, s_no_prio * base){
+  struct timeval agora;
+  gettimeofday(&agora, NULL);
+  printf("Tempo: %ds\n", (agora.tv_sec - inicio.tv_sec));
+  for(int i=0; i < size; i++){
+    if(states[i] == 0 && ((agora.tv_sec - inicio.tv_sec) >= processos[i]->inicio)){
+      printf("Manda o processo %d!\n", processos[i]->id);
+      s_no_processo * np = create_no_processo(processos[i]);
+      add_process(np, base);
+      states[i] = 1;
+    }
+
+  }
+  
 }
