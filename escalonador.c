@@ -6,18 +6,13 @@
 #include <sys/types.h>
 #include <signal.h>
 
-void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timeval * ultimo_inc, s_no_prio * base, s_no_processo ** running){
+void escalona(struct timeval * ultima_mod, s_no_prio * base, s_no_processo ** running){
   // variaveis
   s_no_prio * p = base;
   struct timeval agora;
   int over = 0;
   // checa se uma UT se passou
   gettimeofday(&agora, NULL);
-  if((agora.tv_sec - ultimo_inc->tv_sec) < 1 && *running != NULL){
-    return;
-    }
-  gettimeofday(ultimo_inc, NULL);
-
   // printa report
   if(*running != NULL){
       (*running)->processo->decorrido += 1;
@@ -48,14 +43,11 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
   // Se o próximo da fila era o próprio processo já rodando, retornamos
   if(!over && (*running) == p->no->next && (*running) != NULL){
     gettimeofday(ultima_mod, NULL);
-
-      printf("Tempo: %d Rodando: %s\n", agora.tv_sec - inicio->tv_sec, (*running)->processo->nome);    return;
+    return;
     }
   
   // Se a maior prioridade está no mesmo nível do anterior e ainda não acabou o time slice, retornamos
     if((*running) != NULL && (agora.tv_sec - ultima_mod->tv_sec) % 3 != 0 && (*running)->processo->prio == p->no->next->processo->prio){
-
-      printf("Tempo: %d Rodando: %s\n", agora.tv_sec - inicio->tv_sec, (*running)->processo->nome);
     return;
   }
 
@@ -93,6 +85,5 @@ void escalona(struct timeval * inicio, struct timeval * ultima_mod, struct timev
   p->no->processo->state = 2;
   *running = p->no;
 
-      printf("Tempo: %d Rodando: %s\n", agora.tv_sec - inicio->tv_sec, (*running)->processo->nome);
   return;
 }
