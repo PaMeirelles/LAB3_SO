@@ -13,6 +13,7 @@ int main(void) {
   gettimeofday(&ultimo_inc, NULL);
   gettimeofday(&ultima_mod, NULL);
   s_no_prio * base = init_prios(7);
+  freopen("saida.txt", "a+", stdout);
   while(1){
     interpreta(inicio, processos, base);
     escalona(&inicio, &ultima_mod, &ultimo_inc, base, &running);
