@@ -3,6 +3,36 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void printa_fila(s_no_prio * head, int size, s_no_processo * running){
+  s_no_prio * h = head;
+  int counter = 0;
+  s_no_processo * p;
+  while(h){
+    p = h->no;
+    if(counter == size){
+      return;
+    }
+    if(p == NULL){
+      h = h->next;
+      counter++;
+      continue;
+    }
+    while(p->next != h->no){
+      if(p != running){
+      printf("%s ", p->processo->nome);
+      }
+      p = p->next;
+    }
+          if(p != running){
+                  printf("%s ", p->processo->nome);
+
+            }
+    h = h->next;
+    counter++;
+      }
+  printf("\n");
+}
+
 s_processo * carrega_processo(char * linha, unsigned short * num_processos){
   char * indices[4];
   char buffer[100];

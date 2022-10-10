@@ -1,56 +1,56 @@
-Tempo: 1 Executando: p1
-Tempo: 2 Executando: p1
-Tempo: 3 Executando: p2
-Tempo: 4 Executando: p3
-Tempo: 5 Executando: p3
-Tempo: 6 Executando: p3
-Tempo: 7 Executando: p3
-Tempo: 8 Executando: p5
-Tempo: 9 Executando: p5
-Tempo: 10 Executando: p5
-Tempo: 11 Executando: p3
-Tempo: 12 Executando: p3
-Tempo: 13 Executando: p3
-Tempo: 14 Executando: p5
-Tempo: 15 Executando: p5
-Tempo: 16 Executando: p5
-Tempo: 17 Executando: p3
-Tempo: 18 Executando: p3
-Tempo: 19 Executando: p3
-Tempo: 20 Executando: p5
-Tempo: 21 Executando: p5
-Tempo: 22 Executando: p5
-Tempo: 23 Executando: p3
-Tempo: 24 Executando: p5
-Tempo: 25 Executando: p5
-Tempo: 26 Executando: p5
-Tempo: 27 Executando: p5
-Tempo: 28 Executando: p5
-Tempo: 29 Executando: p2
-Tempo: 30 Executando: p2
-Tempo: 31 Executando: p2
-Tempo: 32 Executando: p4
-Tempo: 33 Executando: p4
-Tempo: 34 Executando: p4
-Tempo: 35 Executando: p2
-Tempo: 36 Executando: p2
-Tempo: 37 Executando: p2
-Tempo: 38 Executando: p4
-Tempo: 39 Executando: p4
-Tempo: 40 Executando: p4
-Tempo: 41 Executando: p2
-Tempo: 42 Executando: p2
-Tempo: 43 Executando: p4
-Tempo: 44 Executando: p4
-Tempo: 45 Executando: p4
-Tempo: 46 Executando: p4
-Tempo: 47 Executando: p4
-Tempo: 48 Executando: p4
-Tempo: 49 Executando: p4
-Tempo: 50 Executando: p1
-Tempo: 51 Executando: p1
-Tempo: 52 Executando: p1
-Tempo: 53 Executando: p1
-Tempo: 54 Executando: p1
-Tempo: 55 Executando: p1
+Tempo: 1 Executando: p1 Na fila: 
+Tempo: 2 Executando: p1 Na fila: 
+Tempo: 3 Executando: p2 Na fila: p1 
+Tempo: 4 Executando: p3 Na fila: p2 p1 
+Tempo: 5 Executando: p3 Na fila: p2 p4 p1 
+Tempo: 6 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 7 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 8 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 9 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 10 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 11 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 12 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 13 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 14 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 15 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 16 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 17 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 18 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 19 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 20 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 21 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 22 Executando: p5 Na fila: p3 p2 p4 p1 
+Tempo: 23 Executando: p3 Na fila: p5 p2 p4 p1 
+Tempo: 24 Executando: p5 Na fila: p2 p4 p1 
+Tempo: 25 Executando: p5 Na fila: p2 p4 p1 
+Tempo: 26 Executando: p5 Na fila: p2 p4 p1 
+Tempo: 27 Executando: p5 Na fila: p2 p4 p1 
+Tempo: 28 Executando: p5 Na fila: p2 p4 p1 
+Tempo: 29 Executando: p2 Na fila: p4 p1 
+Tempo: 30 Executando: p2 Na fila: p4 p1 
+Tempo: 31 Executando: p2 Na fila: p4 p1 
+Tempo: 32 Executando: p4 Na fila: p2 p1 
+Tempo: 33 Executando: p4 Na fila: p2 p1 
+Tempo: 34 Executando: p4 Na fila: p2 p1 
+Tempo: 35 Executando: p2 Na fila: p4 p1 
+Tempo: 36 Executando: p2 Na fila: p4 p1 
+Tempo: 37 Executando: p2 Na fila: p4 p1 
+Tempo: 38 Executando: p4 Na fila: p2 p1 
+Tempo: 39 Executando: p4 Na fila: p2 p1 
+Tempo: 40 Executando: p4 Na fila: p2 p1 
+Tempo: 41 Executando: p2 Na fila: p4 p1 
+Tempo: 42 Executando: p2 Na fila: p4 p1 
+Tempo: 43 Executando: p4 Na fila: p1 
+Tempo: 44 Executando: p4 Na fila: p1 
+Tempo: 45 Executando: p4 Na fila: p1 
+Tempo: 46 Executando: p4 Na fila: p1 
+Tempo: 47 Executando: p4 Na fila: p1 
+Tempo: 48 Executando: p4 Na fila: p1 
+Tempo: 49 Executando: p4 Na fila: p1 
+Tempo: 50 Executando: p1 Na fila: 
+Tempo: 51 Executando: p1 Na fila: 
+Tempo: 52 Executando: p1 Na fila: 
+Tempo: 53 Executando: p1 Na fila: 
+Tempo: 54 Executando: p1 Na fila: 
+Tempo: 55 Executando: p1 Na fila: 
 Fim do programa

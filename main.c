@@ -23,7 +23,8 @@ int main(void) {
   while(1){
     gettimeofday(&agora, NULL);
     if((agora.tv_sec - ultimo_inc.tv_sec) >= 1){
-          printf("Tempo: %d Executando: %s\n", agora.tv_sec - inicio.tv_sec, running->processo->nome);
+          printf("Tempo: %d Executando: %s Na fila: ", agora.tv_sec - inicio.tv_sec, running->processo->nome);
+      printa_fila(base, 7, running);
 
       gettimeofday(&ultimo_inc, NULL);
       interpreta(inicio, processos, base);

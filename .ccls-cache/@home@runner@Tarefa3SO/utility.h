@@ -32,3 +32,4 @@ void printa_processo(s_processo * processo);
 s_processo * carrega_processo(char * linha, unsigned short * num_processos);
 s_no_prio * init_prios(unsigned short n);
 s_no_processo * acha_processo(char * nome, unsigned short prio, s_no_prio * head);
+void printa_fila(s_no_prio * head, int size, s_no_processo * running);
